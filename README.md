@@ -88,3 +88,4 @@ So, before start you need to go to the **`application.properties`** file and cha
 5) (OPTIONAL) **spring.data.rest.basePath**: This is the base url for your api. This comes after the serverName:Port.
     - The url for this api starts localhost:8090/**spring.data.rest.basePath**/... so, if you want change it, you can change it in application.properties and it will change in whole project.
 
+After did this steps, execute a `mvn install` or `mvn build` lifecycle and start the server using a spring configuration.
