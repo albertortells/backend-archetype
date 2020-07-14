@@ -71,17 +71,20 @@ As you can see, this project is the base for all backend projects with latest te
 * :page_facing_up: **`pom.xml`**: XML file that contains information about the project and configuration details used by Maven to build the project.
 * :page_facing_up: **`README.md`**:
 
-## How do we get start?
+## How do we start?
 
 For use this archetype, first you need change some application properties for run the project in your localhost.
 
-So, before start you need to go to the application.properties file which is located at 'src/main/resources' path and change:
+So, before start you need to go to the **`application.properties`** file and change:
 
-1) spring.datasource.url
-Here you need to change the localhost url to connect database. If you go to your database program (SQL Server Management, MySQL Workbench...) you can take the url connection from there.
-2) spring.datasource.username
-   spring.datasource.password
-   You need put your user and password of your database. Usually, the root/admin user.
-3) spring.session.jdbc.schema
-Put the name of your database with you'll go to work
+1) **spring.datasource.url**: Here you need to change the localhost url to connect database. If you go to your database program (SQL Server Management, MySQL Workbench...) you can take the url connection from there.
+
+2) **spring.datasource.username**: I recommends the super admin user, usually called *root* or *admin*
+
+3) **spring.datasource.password**: *root* or *admin* password
+
+4) **spring.session.jdbc.schema**: Put the name of your database with you'll go to work
+
+5) (OPTIONAL) **spring.data.rest.basePath**: This is the base url for your api. This comes after the serverName:Port.
+    - The url for this api starts localhost:8090/**spring.data.rest.basePath**/... so, if you want change it, you can change it in application.properties and it will change in whole project.
 
