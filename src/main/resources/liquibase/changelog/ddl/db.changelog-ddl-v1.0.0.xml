@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+	logicalFilePath="db.changelog-ddl-v1.0.0.xml">
+
+	<changeSet id="testExample1" author="albert.ortells">
+
+		<sql>
+			CREATE TABLE SPRING_SESSION (
+				PRIMARY_ID CHAR(36) NOT NULL,
+				SESSION_ID CHAR(36) NOT NULL,
+				CREATION_TIME BIGINT NOT NULL,
+				LAST_ACCESS_TIME BIGINT NOT NULL,
+				MAX_INACTIVE_INTERVAL INT NOT NULL,
+				EXPIRY_TIME BIGINT NOT NULL,
+				PRINCIPAL_NAME VARCHAR(100),
+				CONSTRAINT SPRING_SESSION_PK PRIMARY KEY (PRIMARY_ID)
+			);
+
+			CREATE UNIQUE INDEX SPRING_SESSION_IX1 ON SPRING_SESSION (SESSION_ID);
+			CREATE INDEX SPRING_SESSION_IX2 ON SPRING_SESSION (EXPIRY_TIME);
+			CREATE INDEX SPRING_SESSION_IX3 ON SPRING_SESSION (PRINCIPAL_NAME);
+
+			CREATE TABLE SPRING_SESSION_ATTRIBUTES (
+				SESSION_PRIMARY_ID CHAR(36) NOT NULL,
+				ATTRIBUTE_NAME VARCHAR(200) NOT NULL, ATTRIBUTE_BYTES BLOB NOT NULL,
+				CONSTRAINT SPRING_SESSION_ATTRIBUTES_PK PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME),
+				CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION(PRIMARY_ID) ON DELETE CASCADE
+			);
+		</sql>
+
+		<createTable tableName="example">
+			<column name="co_id" type="${ID_TYPE}" autoIncrement="true">
+				<constraints
+					primaryKey="true"
+					primaryKeyName="co_pk_id"
+				/>
+			</column>
+			<column name="co_mail" type="${MAIL_TYPE}">
+				<constraints
+					unique="true"
+					uniqueConstraintName="co_unq_mail"
+					nullable="false"
+				/>
+			</column>
+			<column name="co_password" type="${PASSWORD_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="co_name" type="${NAME_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="co_surname" type="${NAME_TYPE}">
+				<constraints nullable="false" />
+			</column>
+			<column name="co_birthday" type="${DATE_TYPE}">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="created_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="created_by" type="${AUDITABLE_USER_TYPE}" />
+			<column name="modified_date" type="${AUDITABLE_DATE_TYPE}" />
+			<column name="modified_by" type="${AUDITABLE_USER_TYPE}" />
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>
