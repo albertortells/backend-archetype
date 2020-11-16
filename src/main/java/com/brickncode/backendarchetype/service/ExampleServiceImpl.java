@@ -31,7 +31,7 @@ public class ExampleServiceImpl implements ExampleService {
 	private ExampleMapper mapper;
 
 	@Override
-	public GenericResponse getAllExample() {
+	public GenericResponse getAllExamples() {
 
 		List<ExampleEntity> entities = repository.findAll();
 		List<Example> examples = new ArrayList<>();
@@ -175,8 +175,8 @@ public class ExampleServiceImpl implements ExampleService {
 
 	/**
 	 * This method is for add the info to the object which let us know who and when modify this object in and for database
-	 * @param pojo
-	 * @return
+	 * @param pojo - object parsed coming from the front app
+	 * @return ExampleEntity
 	 */
 	private ExampleEntity fillExampleEntity(Example pojo) {
 		ExampleEntity ee = mapper.exampleToExampleEntity(pojo);

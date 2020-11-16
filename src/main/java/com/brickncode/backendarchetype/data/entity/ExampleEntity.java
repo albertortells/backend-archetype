@@ -8,7 +8,9 @@ import java.util.Date;
  *
  */
 @Entity
+//If you want yo can put the schema variable to the Table Annotation like this:
 @Table(name = "example", schema = "test")
+//@Table(name = "example")
 public class ExampleEntity extends AuditableEntity implements Serializable {
 
 	private static final long serialVersionUID = -524244669132619550L;

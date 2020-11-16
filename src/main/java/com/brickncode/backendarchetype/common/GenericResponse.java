@@ -6,6 +6,8 @@ public class GenericResponse {
 	private String message;
 	private Object data;
 
+	public GenericResponse() { }
+
 	public GenericResponse(int status, String message) {
 		this.status = status;
 		this.message = message;

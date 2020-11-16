@@ -10,7 +10,7 @@ public interface ExampleService {
 	 * Method for get all example users in database. This method no need any parameter, just the correct URL.
 	 * @return GenericResponse
 	 */
-	GenericResponse getAllExample();
+	GenericResponse getAllExamples();
 
 	/**
 	 * Method for get the information for one example user using the id parameter.

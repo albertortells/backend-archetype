@@ -22,13 +22,13 @@ public class ExampleController {
 	private ExampleService service;
 
 	@GetMapping(path = URLConstant.GETALL, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody GenericResponse getExample() {
-		return service.getAllExample();
+	public @ResponseBody GenericResponse getAllExamples() {
+		return service.getAllExamples();
 	}
 
 	@GetMapping(path = URLConstant.GETONE + URLConstant.ID_VARIABLE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody GenericResponse getOneExampleByID(@Valid @PathVariable Integer id) {
-		if(id == null) {
+		if(id == null || id < 0) {
 			return new GenericResponse(Response.Status.BAD_REQUEST.getStatusCode(), Response.Status.BAD_REQUEST.getReasonPhrase());
 		}
 		return service.getExampleByID(id);
@@ -54,7 +54,7 @@ public class ExampleController {
 
 	@DeleteMapping(path = URLConstant.DELETE + URLConstant.ID_VARIABLE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody GenericResponse deleteExample(@Valid @PathVariable Integer id) {
-		if(id == null) {
+		if(id == null || id < 0) {
 			return new GenericResponse(Response.Status.BAD_REQUEST.getStatusCode(), Response.Status.BAD_REQUEST.getReasonPhrase());
 		}
 		return service.deleteExample(id);
