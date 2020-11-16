@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -40,6 +41,7 @@ class ExampleServiceImplTest {
 
 		//Then
 		assertEquals(200, response.getStatus());
+		assertEquals(Response.Status.OK.getReasonPhrase() + " - Examples found it.", response.getMessage());
 	}
 
 	@Test
@@ -91,7 +93,7 @@ class ExampleServiceImplTest {
 		GenericResponse response = service.postExample(exInput);
 
 		//Then
-		assertEquals(200, response.getStatus());
+		assertEquals(201, response.getStatus());
 	}
 
 	@Test
@@ -119,7 +121,7 @@ class ExampleServiceImplTest {
 		GenericResponse response = service.putExample(exInput);
 
 		//Then
-		assertEquals(200, response.getStatus());
+		assertEquals(201, response.getStatus());
 	}
 
 	@Test

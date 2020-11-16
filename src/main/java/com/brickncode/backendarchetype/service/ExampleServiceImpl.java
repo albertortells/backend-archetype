@@ -107,8 +107,8 @@ public class ExampleServiceImpl implements ExampleService {
 		//Generate the response
 		GenericResponse response;
 
-		int status = Status.OK.getStatusCode();
-		String message = Status.OK.getReasonPhrase() + " - Example user saved.";
+		int status = Status.CREATED.getStatusCode();
+		String message = Status.CREATED.getReasonPhrase() + " - Example user saved.";
 		response = new GenericResponse(status, message, out);
 
 		return response;
@@ -150,8 +150,8 @@ public class ExampleServiceImpl implements ExampleService {
 		//Generate the response
 		GenericResponse response;
 
-		int status = Status.OK.getStatusCode();
-		String message = Status.OK.getReasonPhrase() + " - Example user updated.";
+		int status = Status.CREATED.getStatusCode();
+		String message = Status.CREATED.getReasonPhrase() + " - Example user updated.";
 		response = new GenericResponse(status, message, out);
 
 		return response;

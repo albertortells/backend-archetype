@@ -45,7 +45,7 @@ public class ExampleController {
 
 	@PutMapping(path = URLConstant.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody GenericResponse putExample(@Valid @RequestBody ExamplePutInput data) {
-		if(data == null || data.getId() == null || data.getName() == null || data.getName().isEmpty() || data.getSurname() == null || data.getSurname().isEmpty()
+		if(data == null || data.getId() == null || data.getId() < 0 || data.getName() == null || data.getName().isEmpty() || data.getSurname() == null || data.getSurname().isEmpty()
 				|| data.getPassword() == null || data.getPassword().isEmpty() || data.getStrBirthday() == null || data.getStrBirthday().isEmpty()) {
 			return new GenericResponse(Response.Status.BAD_REQUEST.getStatusCode(), Response.Status.BAD_REQUEST.getReasonPhrase() + " - missing information.");
 		}

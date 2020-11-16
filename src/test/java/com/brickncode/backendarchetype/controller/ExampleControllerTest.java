@@ -4,7 +4,9 @@ import com.brickncode.backendarchetype.common.GenericResponse;
 import com.brickncode.backendarchetype.common.URLConstant;
 import com.brickncode.backendarchetype.data.model.Example;
 import com.brickncode.backendarchetype.data.model.input.ExamplePostInput;
+import com.brickncode.backendarchetype.data.model.input.ExamplePutInput;
 import com.brickncode.backendarchetype.data.model.output.ExamplePostOutput;
+import com.brickncode.backendarchetype.data.model.output.ExamplePutOutput;
 import com.brickncode.backendarchetype.service.interfaces.ExampleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -21,9 +23,9 @@ import java.util.Date;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -43,7 +45,10 @@ class ExampleControllerTest {
 
 		Example ex1 = new Example(1, "mail@mail.com", "password", "name", "surname", new Date());
 		Example ex2 = new Example(2, "mail2@mail.com", "password2", "name2", "surname2", new Date());
-		GenericResponse response = new GenericResponse(200,"OK", Arrays.asList(ex1, ex2));
+		GenericResponse response = new GenericResponse();
+		response.setStatus(200);
+		response.setMessage("OK");
+		response.setData(Arrays.asList(ex1, ex2));
 		doReturn(response).when(service).getAllExamples();
 
 		//When
@@ -111,40 +116,117 @@ class ExampleControllerTest {
 	@Test
 	void postExample_whenValidInput_thenReturnStatus201() throws Exception {
 		//Given
-		//String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.POST;
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.POST;
 
-		//ExamplePostInput input = new ExamplePostInput("name", "surname", "mail", "password", "2020/09/30");
-		//ExamplePostOutput output = new ExamplePostOutput(1,"name", "mail");
-		//GenericResponse response = new GenericResponse(201, "OK", output);
-		//doReturn(response).when(service).postExample(any());
+		ExamplePostInput input = new ExamplePostInput("name", "surname", "mail", "password", "2020/09/30");
+		ExamplePostOutput output = new ExamplePostOutput(1,"name", "mail");
+		GenericResponse response = new GenericResponse(201, "OK", output);
+		doReturn(response).when(service).postExample(any());
 
 		//When
-		//mockMvc.perform(post(uri)
-			//.contentType(MediaType.APPLICATION_JSON)
-			//.content(asJsonString(input)))
+		mockMvc.perform(post(uri)
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(asJsonString(input)))
 
 		//Then
-			//.andExpect(status().isOk())
-			//.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			//.andExpect(jsonPath("$.status", is(201)));
+			.andExpect(status().is2xxSuccessful())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.status", is(201)));
 	}
 
 	@Test
-	void putExample() {
+	void postExample_whenInvalidInput_thenReturnStatus400() throws Exception {
 		//Given
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.POST;
+
+		ExamplePostInput input = new ExamplePostInput(null, "surname", "mail", "password", "2020/09/30");
+		GenericResponse response = new GenericResponse(400, "NOK");
+		doReturn(response).when(service).postExample(any());
 
 		//When
+		mockMvc.perform(post(uri)
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(asJsonString(input)))
 
 		//Then
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.status", is(400)));
 	}
 
 	@Test
-	void deleteExample() {
+	void putExample_whenValidInput_thenReturnStatus201() throws Exception {
 		//Given
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.PUT;
+
+		ExamplePutInput input = new ExamplePutInput(1, "name", "surname", "password", "2020/09/30");
+		ExamplePutOutput output = new ExamplePutOutput(1,"mail", "password", "name", "surname", "2020/09/30");
+		GenericResponse response = new GenericResponse(201, "OK", output);
+		doReturn(response).when(service).putExample(any());
 
 		//When
+		mockMvc.perform(put(uri)
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(asJsonString(input)))
 
 		//Then
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.status", is(201)));
+	}
+
+	@Test
+	void putExample_whenInvalidInput_thenReturnStatus400() throws Exception {
+		//Given
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.PUT;
+
+		ExamplePutInput input = new ExamplePutInput(1, null, "surname", "password", "2020/09/30");
+		GenericResponse response = new GenericResponse(400, "NOK");
+		doReturn(response).when(service).putExample(any());
+
+		//When
+		mockMvc.perform(put(uri)
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(asJsonString(input)))
+
+		//Then
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.status", is(400)));
+	}
+
+	@Test
+	void deleteExample_whenValidId_thenReturnStatus200() throws Exception {
+		//Given
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.DELETE + URLConstant.ID_VARIABLE;
+
+		GenericResponse response = new GenericResponse(200,"OK", true);
+		doReturn(response).when(service).deleteExample(anyInt());
+
+		//When
+		mockMvc.perform(delete(uri, 1))
+
+		//Then
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(jsonPath("$.status", is(200)));
+	}
+
+	@Test
+	void deleteExample_whenInvalidId_thenReturnStatus400() throws Exception {
+		//Given
+		String uri = "/backend-archetype" + URLConstant.EXAMPLE + URLConstant.DELETE + URLConstant.ID_VARIABLE;
+
+		GenericResponse response = new GenericResponse(400,"NOK");
+		doReturn(response).when(service).deleteExample(null);
+
+		//When
+		mockMvc.perform(delete(uri, -1))
+
+				//Then
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.status", is(400)));
 	}
 
 	static String asJsonString(final Object obj) {
