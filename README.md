@@ -1,5 +1,5 @@
 # backend-archetype
-Maven archetype for backend projects with Spring, Hibernate, Docker
+Maven archetype for backend projects with Spring, Hibernate and liquibase.
 
 As you can see, this project is the base for all backend projects with java 1.8 and maven 3.6.3, but if you know how, its easy tu upgrade to the latest versions. This project has test too so, any code of you find here is tested to guarantee its correct operation.
 
@@ -85,3 +85,11 @@ So, before start you need to go to the **`application.properties`** file and cha
     - The url for this api starts localhost:8090/**spring.data.rest.basePath**/... so, if you want change it, you can change it in application.properties and it will change in whole project.
 
 After did this steps, execute a `mvn install` or `mvn build` lifecycle and start the server using a spring configuration.
+
+
+
+## Comming updates for v2
+
+1) Minikube implementation with Docker
+
+2) Implementation of different users for different types of execution and different databases. (LOCAL - INT - PRE - PRO)
