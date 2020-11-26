@@ -90,7 +90,7 @@ After did this steps, execute a `mvn install` or `mvn build` lifecycle and start
 
 ## Comming updates for v2
 
-1) Minikube implementation with Docker
+1) Kubernetes implementation with Docker
 
 2) Implementation of different users for different types of execution and different databases. (LOCAL - INT - PRE - PRO)
 
