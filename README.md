@@ -75,7 +75,7 @@ So, before start you need to go to the **`application.properties`** file and cha
 
 1) **spring.datasource.url**: Here you need to change the localhost url to connect the database. If you go to your database program (SQL Server Management, MySQL Workbench...) you can take the url connection from there.
 
-2) **spring.datasource.username**: I recommends the super admin user, usually called *root* or *admin*
+2) **spring.datasource.username**: I recommend the super admin user, usually called *root* or *admin*
 
 3) **spring.datasource.password**: *root* or *admin* password
 
@@ -93,3 +93,5 @@ After did this steps, execute a `mvn install` or `mvn build` lifecycle and start
 1) Minikube implementation with Docker
 
 2) Implementation of different users for different types of execution and different databases. (LOCAL - INT - PRE - PRO)
+
+3) Logger for exceptions, and create custom exceptions.
