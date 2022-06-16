@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.brickncode.backendarchetype.data.entity.ExampleEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ExampleRepository extends JpaRepository<ExampleEntity, Integer> {
