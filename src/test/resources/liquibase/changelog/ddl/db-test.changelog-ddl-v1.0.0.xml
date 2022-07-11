@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
-	logicalFilePath="db.changelog-ddl-v1.0.0.xml">
+	logicalFilePath="db-test.changelog-ddl-v1.0.0.xml">
 
 	<changeSet id="test" author="albert.ortells">
 
