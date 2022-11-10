@@ -99,6 +99,6 @@ After did this steps, execute a `mvn install` or `mvn build` lifecycle and start
 
 ## Comming updates for v2
 
-1) Logging implementation using own configs
+1) Logging implementation using own configs and own exceptions
 2) Docker implementation
 3) Implementation of different users for different types of execution and different databases. (LOCAL - INT - PRE - PRO)

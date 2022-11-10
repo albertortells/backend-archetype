@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.brickncode</groupId>
+	<groupId>com.bytelius</groupId>
 	<artifactId>backend-archetype</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<!--
@@ -24,21 +24,22 @@
 		</license>
 	</licenses>
 	-->
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version>
+		<version>2.7.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<mvn.version>3.8.1</mvn.version>
 		<java.version>11</java.version>
-		<liquibase-core.version>4.11.0</liquibase-core.version>
-		<h2.version>2.1.212</h2.version>
-		<mysql-connector-java.version>8.0.29</mysql-connector-java.version>
-		<hibernate-core.version>6.1.1.Final</hibernate-core.version>
-		<org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
+		<liquibase-core.version>4.17.1</liquibase-core.version>
+		<h2.version>2.1.214</h2.version>
+		<mysql-connector-java.version>8.0.30</mysql-connector-java.version>
+		<hibernate-core.version>6.1.4.Final</hibernate-core.version>
+		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<lombok.version>1.18.24</lombok.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 	</properties>
