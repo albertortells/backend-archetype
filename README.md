@@ -9,42 +9,58 @@ As you can see, this project is the base for all backend projects with java 1.8 
 * :file_folder: ***src***:
     * :file_folder: ***main***:
         * :file_folder: ***java***:
-            * :file_folder: ***com.brickncode.backendarchetype***:
-                * :file_folder: ***common***: This folder contains the common classes, and was intended to contain any common code to reuse as many times as the developer deems necessary.
+            * :file_folder: ***com.bytelius.backendarchetype***:
+                * :file_folder: ***shared***: This folder contains the shared classes, and was intended to contain any shared code to reuse as many times as the developer deems necessary.
+                    * :file_folder: ***exception***: This folder contains the exception classes.
+                        * :page_facing_up: **`ErrorResponse.java`**:
+                        * :page_facing_up: **`NotFoundException.java`**:
+                        * :page_facing_up: **`NotValidArgumentException.java`**:
+                        * :page_facing_up: **`WriteDBException.java`**:
                     * :file_folder: ***utils***: This folder contains the util classes.
                         * :page_facing_up: **`IUtilParser.java`**:
                     * :page_facing_up: **`URLConstant.java`**: Class containing all routes of the REST Api.
-                * :file_folder: ***controller***: This folder contains any controller that api needs.
-                    * :page_facing_up: **`ISampleController.java`**:
-                    * :file_folder: ***impl***:
-                      * :page_facing_up: **`SampleController.java`**:
-                * :file_folder: ***data***: This folder contains every class related with the mojo/pojo objects.
-                    * :file_folder: ***entity***: This contains the java classes who trying to be the database tables.
-                        * :file_folder: ***enums***:
-                          * :page_facing_up: **`Continent.java`**:
-                        * :page_facing_up: **`CityEntity.java`**:
-                        * :page_facing_up: **`CountryEntity.java`**:
-                    * :file_folder: ***mapper***: It contains the mappers to map each entity and mojo / pojo for any part of the code cannot throw any exceptions due to mismatches between the objects of the database, and the java objects that come from the client user.
-                        * :page_facing_up: **`ISampleMapper.java`**:
-                    * :file_folder: ***model***: It contains the mojo/pojo classes with you work. Inside it has two more folders for separate the full objects with the input/output objects. Because, you know, it is important to keep the information safe and not return unnecessary information to the user.
-                        * :file_folder: ***input***: For any input object comes from user, here is where the java class should go. This classes only have the necessary attributes for api rest can manage the intel and send it to database.
-                            * :page_facing_up: **`NewCityInput.java`**:
-                            * :page_facing_up: **`UpdateCityInput.java`**:
-                        * :file_folder: ***output***: For any output object for the user, this is where the java class should go. These classes only have the necessary attributes for the user to continue working in the application and have all the necessary information to do any type of action.
-                            * :page_facing_up: **`CityOutput.java`**:
-                            * :page_facing_up: **`NewCityOutput.java`**:
-                        * :page_facing_up: **`CityClass.java`**: Full object that is equal to the entity, but without all the annotations to make these class resemble the database table.
-                        * :page_facing_up: **`CountryClass.java`**: Full object that is equal to the entity, but without all the annotations to make these class resemble the database table.
-                        * :page_facing_up: **`GenericResponse.java`**: Base object that will return the backend to the client in JSON format.
-                * :file_folder: ***repository***: This folder is for all repositories that you need for search, get, save or delete in the database.
-                    * :page_facing_up: **`ISampleRepository.java`**:
-                    * :file_folder: ***impl***:
-                      * :page_facing_up: **`SampleRepository.java`**:
-                * :file_folder: ***service***: This folder contains all the java classes that are in charge of the business logic of the api. This is where it transforms the objects that the api receives into objects for the database, operate with them, and transform them again to return them.
-                    * :file_folder: ***impl***: There are the interfaces which contains the code
-                        * :page_facing_up: **`SampleService.java`**:
-                    * :page_facing_up: **`ISampleService.java`**:
+                    * :page_facing_up: **`GenericResponse.java`**: Base object that will return the backend to the client in JSON format.
+                * :file_folder: ***city***:
+                    * :file_folder: ***controller***: This folder contains any controller that api needs for city cases.
+                        * :page_facing_up: **`ICityController.java`**:
+                        * :file_folder: ***impl***:
+                            * :page_facing_up: **`CityController.java`**:
+                    * :file_folder: ***data***: This folder contains every class related with the mojo/pojo objects.
+                        * :file_folder: ***dto***: It contains the mojo/pojo classes with you work. Inside it has two more folders for separate the full objects with the input/output objects. Because, you know, it is important to keep the information safe and not return unnecessary information to the user.
+                            * :file_folder: ***input***: For any input object comes from user, here is where the java class should go. This classes only have the necessary attributes for api rest can manage the intel and send it to database.
+                                * :page_facing_up: **`NewCityInput.java`**:
+                                * :page_facing_up: **`UpdateCityInput.java`**:
+                            * :file_folder: ***output***: For any output object for the user, this is where the java class should go. These classes only have the necessary attributes for the user to continue working in the application and have all the necessary information to do any type of action.
+                                * :page_facing_up: **`CityOutput.java`**:
+                                * :page_facing_up: **`NewCityOutput.java`**:
+                                * :page_facing_up: **`UpdateCityOutput.java`**:
+                            * :page_facing_up: **`CityClass.java`**: Full object that is equal to the entity, but without all the annotations to make these class resemble the database table.
+                        * :file_folder: ***entity***: This contains the java classes who trying to be the database tables.
+                            * :page_facing_up: **`CityEntity.java`**:
+                        * :file_folder: ***mapper***: It contains the mappers to map each entity and mojo / pojo for any part of the code cannot throw any exceptions due to mismatches between the objects of the database, and the java objects that come from the client user.
+                            * :page_facing_up: **`ICityMapper.java`**:
+                    * :file_folder: ***repository***: This folder is for all repositories that you need for search, get, save or delete in the database.
+                        * :page_facing_up: **`ICityRepository.java`**:
+                        * :file_folder: ***impl***:
+                          * :page_facing_up: **`CityRepository.java`**:
+                    * :file_folder: ***service***: This folder contains all the java classes that are in charge of the business logic of the api. This is where it transforms the objects that the api receives into objects for the database, operate with them, and transform them again to return them.
+                        * :file_folder: ***impl***: There are the interfaces which contains the code
+                            * :page_facing_up: **`CityService.java`**:
+                        * :page_facing_up: **`ICityService.java`**:
+                * :file_folder: ***country***:
+                    * :file_folder: ***controller***:
+                    * :file_folder: ***data***:
+                        * :file_folder: ***dto***:
+                            * :page_facing_up: **`CountryClass.java`**: Full object that is equal to the entity, but without all the annotations to make these class resemble the database table.
+                        * :file_folder: ***entity***:
+                            * :file_folder: ***enums***:
+                                * :page_facing_up: **`Continent.java`**:
+                            * :page_facing_up: **`CountryEntity.java`**:
+                        * :file_folder: ***mapper***:
+                    * :file_folder: ***repository***:
+                    * :file_folder: ***service***:
                 * :page_facing_up: **`BackendArchetypeApplication.java`**: Main Java class. When you execute the server, this is the first java class runs.
+                
         * :file_folder: ***resources***:
             * :file_folder: ***liquibase***: If you know about liquibase, I suppose you may know what's this folder contains and what for. If you don't know about it, go [here](https://www.liquibase.org/) and learn a bit. For the others, here are the files for manage a version control of your database.
                 * :file_folder: ***changelog***:
