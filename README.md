@@ -22,9 +22,9 @@ As you can see, this project is the base for all backend projects with java 1.8 
                     * :page_facing_up: **`GenericResponse.java`**: Base object that will return the backend to the client in JSON format.
                 * :file_folder: ***city***:
                     * :file_folder: ***controller***: This folder contains any controller that api needs for city cases.
-                        * :page_facing_up: **`ICityController.java`**:
                         * :file_folder: ***impl***:
                             * :page_facing_up: **`CityController.java`**:
+                        * :page_facing_up: **`ICityController.java`**:
                     * :file_folder: ***data***: This folder contains every class related with the mojo/pojo objects.
                         * :file_folder: ***dto***: It contains the mojo/pojo classes with you work. Inside it has two more folders for separate the full objects with the input/output objects. Because, you know, it is important to keep the information safe and not return unnecessary information to the user.
                             * :file_folder: ***input***: For any input object comes from user, here is where the java class should go. This classes only have the necessary attributes for api rest can manage the intel and send it to database.
@@ -40,9 +40,9 @@ As you can see, this project is the base for all backend projects with java 1.8 
                         * :file_folder: ***mapper***: It contains the mappers to map each entity and mojo / pojo for any part of the code cannot throw any exceptions due to mismatches between the objects of the database, and the java objects that come from the client user.
                             * :page_facing_up: **`ICityMapper.java`**:
                     * :file_folder: ***repository***: This folder is for all repositories that you need for search, get, save or delete in the database.
-                        * :page_facing_up: **`ICityRepository.java`**:
                         * :file_folder: ***impl***:
-                          * :page_facing_up: **`CityRepository.java`**:
+                            * :page_facing_up: **`CityRepository.java`**:
+                        * :page_facing_up: **`ICityRepository.java`**:
                     * :file_folder: ***service***: This folder contains all the java classes that are in charge of the business logic of the api. This is where it transforms the objects that the api receives into objects for the database, operate with them, and transform them again to return them.
                         * :file_folder: ***impl***: There are the interfaces which contains the code
                             * :page_facing_up: **`CityService.java`**:
@@ -75,15 +75,15 @@ As you can see, this project is the base for all backend projects with java 1.8 
             * :page_facing_up: **`application.properties`**: Property file which have the basic information for the connection to database, put the base url of api, liquibase configuration, set server port...
     * :file_folder: ***test***:
         * :file_folder: ***java***:
-            * :file_folder: ***com.brickncode.backendarchetype***:
+            * :file_folder: ***com.bytelius.backendarchetype***:
                 * :file_folder: ***controller***:
                     * :file_folder: ***impl***:
-                      * :page_facing_up: **`SampleControllerTest.java`**:
-                    * :page_facing_up: **`ISampleControllerTest.java`**:
+                      * :page_facing_up: **`CityControllerTest.java`**:
+                    * :page_facing_up: **`ICityControllerTest.java`**:
                 * :file_folder: ***service***:
                   * :file_folder: ***impl***:
-                      * :page_facing_up: **`SampleServiceTest.java`**:
-                  * :page_facing_up: **`ISampleServiceTest.java`**:
+                      * :page_facing_up: **`CityServiceTest.java`**:
+                  * :page_facing_up: **`ICityServiceTest.java`**:
                 * :page_facing_up: **`BackendArchetypeApplicationTest.java`**:
 * :page_facing_up: **`.gitignore`**:
 * :page_facing_up: **`backend-archetype.iml`**:
