@@ -36,7 +36,7 @@
 		<mvn.version>3.8.1</mvn.version>
 		<java.version>11</java.version>
 		<liquibase-core.version>4.17.1</liquibase-core.version>
-		<h2.version>2.1.214</h2.version>
+		<h2.version>2.2.220</h2.version>
 		<mysql-connector-java.version>8.0.30</mysql-connector-java.version>
 		<hibernate-core.version>6.1.4.Final</hibernate-core.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
